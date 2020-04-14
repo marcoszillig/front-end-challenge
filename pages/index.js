@@ -3,13 +3,41 @@ import Link from "next/link";
 import fetch from "isomorphic-unfetch";
 
 const MovieLink = (props) => (
-  <li key={props.key}>
+  <li className="movie-list__item" key={props.key}>
     <Link href={`/movie?title=${props.title}`}>
       <a>
-        {props.title}
-        <img src={`https://image.tmdb.org/t/p/w500${props.image}`} alt="" />
+        <div className="movie-list__img">
+          <img
+            src={`https://image.tmdb.org/t/p/w500${props.image}`}
+            alt={props.title}
+          />
+        </div>
+        <h3 className="movie-list__item-title">{props.title}</h3>
       </a>
     </Link>
+    <style jsx>{`
+      .movie-list__item {
+      }
+      .movie-list__item a {
+        text-decoration: none;
+      }
+      .movie-list__img {
+        width: 100%;
+        margin: 0 auto;
+      }
+      .movie-list__img img {
+        object-fit: contain;
+        width: 100%;
+      }
+      .movie-list__item-title {
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        font-size: 1.5rem;
+        line-height: 1.5;
+        color: #ddd;
+        margin: 0;
+      }
+    `}</style>
   </li>
 );
 
@@ -31,15 +59,18 @@ const Home = (props) => (
           </div>
         </div>
       </div>
-      <ul>
-        {props.movies.map((movie) => (
-          <MovieLink
-            key={movie.id}
-            title={movie.title}
-            image={movie.poster_path}
-          />
-        ))}
-      </ul>
+      <div className="movies-container">
+        <h3 className="movies-container__title">Os filmes mais populares da semana</h3>
+        <ul className="movie-list">
+          {props.movies.map((movie) => (
+            <MovieLink
+              key={movie.id}
+              title={movie.title}
+              image={movie.poster_path}
+            />
+          ))}
+        </ul>
+      </div>
     </main>
     <style jsx>{`
       body {
@@ -54,7 +85,7 @@ const Home = (props) => (
         margin-left: 30%;
         position: relative;
         grid-template-rows: 600px;
-        margin-bottom: 120px;
+        margin-bottom: 160px;
       }
       .spotlight__header {
         justify-self: flex-start;
@@ -68,7 +99,7 @@ const Home = (props) => (
       .spotlight h1 {
         color: #fff;
       }
-      
+
       .spotlight__content-img img {
         object-fit: cover;
         width: 100%;
@@ -82,7 +113,7 @@ const Home = (props) => (
         position: absolute;
         left: -250%;
         opacity: 0.1;
-       
+
         margin: 0;
       }
       .spotlight__header-subtitle {
@@ -90,8 +121,8 @@ const Home = (props) => (
         font-family: "Poppins", sans-serif;
         font-weight: 400;
         font-size: 2.5rem;
-        line-height: 1.5; 
-        margin: 0;       
+        line-height: 1.5;
+        margin: 0;
       }
       .spotlight__header-title {
         font-family: "Poppins", sans-serif;
@@ -100,15 +131,24 @@ const Home = (props) => (
         font-size: 5rem;
         margin: 0;
       }
-      ul {
+      .movies-container__title {
+        color: #ddd;
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        font-size: 2.5rem;
+        line-height: 1.5;
+        margin: 0 auto 32px;
+        text-align: center;
+      }
+      .movie-list {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-gap: 16px;
-        grid-template-rows: auto;
-        justify-items: center;
-      }
-      ul li img {
-        width: 200px;
+        grid-gap: 24px;
+        grid-row-gap: 48px;
+        list-style: none;
+        padding: 0;
+        margin: 0 auto;
+        width: 80%;
       }
     `}</style>
   </Layout>
