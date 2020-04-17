@@ -10,7 +10,7 @@ const MovieContextProvider = (props) => {
   useEffect(() => {
     const getData = (async function () {
       const res = await fetch(
-        `https://api.themoviedb.org/3/movie/popular?api_key=4cdf98dae1ad5192544b610b08d033c5&page=${page}`
+        `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.apiKey}&page=${page}`
       );
       const data = await res.json();
       return dispatch({
@@ -22,7 +22,7 @@ const MovieContextProvider = (props) => {
     })();
     const getGenres = (async function () {
       const res = await fetch(
-        "https://api.themoviedb.org/3/genre/movie/list?api_key=4cdf98dae1ad5192544b610b08d033c5&language=pt-BR"
+        `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.apiKey}&language=pt-BR`
       );
       const data = await res.json();
       return dispatch({
