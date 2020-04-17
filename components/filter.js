@@ -7,7 +7,11 @@ const Filter = () => {
 
   return (
     <div className="movie__genres">
-      <h3 className="movie__genres-title">Filtros</h3>      
+      <h3 className="movie__genres-title" onClick={(e) => {
+        e.target.nextSibling.classList.toggle('active')
+      }}
+      
+      >Filtros</h3>      
       <div className="movie__genres__wrapper">
         {genres.map((genre) => (
           <div className="movie__genres__item" key={genre.id}>
@@ -61,6 +65,16 @@ const Filter = () => {
           color: #eee;
           padding: 8px;
           cursor: pointer;
+        }
+        @media only screen and (max-width: 720px) {
+          .movie__genres__wrapper{
+            height: 0;
+            overflow: hidden;
+            transition: height 0.4s ease-in-out;
+          }
+          .movie__genres__wrapper.active{
+            height: 100%;
+          }
         }
       `}</style>
     </div>

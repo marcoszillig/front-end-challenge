@@ -90,7 +90,10 @@ const Spotlight = () => {
           @media only screen and (max-width: 720px) {
             .spotlight {
               margin-left: 15%;
+              margin-right: 16px;
               grid-template-columns: 1fr 1fr;
+              grid-template-rows: 225px;
+
             }
             .spotlight__content h2 {
               font-size: 4.5rem;
