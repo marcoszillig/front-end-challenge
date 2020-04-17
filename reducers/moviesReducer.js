@@ -1,6 +1,9 @@
 export const initialState = {
   movies: [],
-  page: 0,
+  total_pages: "",
+  page: 1,
+  genres: [],
+  genreID: "",
 };
 
 export const moviesReducer = (state, action) => {
@@ -9,7 +12,18 @@ export const moviesReducer = (state, action) => {
       return {
         ...state,
         movies: action.movies,
+        total_pages: action.total_pages,
         page: action.page,
+      };
+    case "GET_GENRES":
+      return {
+        ...state,
+        genres: action.genres,
+      };
+    case "SET_GENRE":
+      return {
+        ...state,
+        genreID: action.genreID,
       };
     case "INCREASE_PAGE":
       return {
@@ -19,7 +33,7 @@ export const moviesReducer = (state, action) => {
     case "DECREASE_PAGE":
       return {
         ...state,
-        page: (state.page > 0) ? ( state.page - 1) : 0
+        page: state.page > 0 ? state.page - 1 : 0,
       };
     default:
       return state;

@@ -2,6 +2,8 @@ import Layout from "../components/Layout";
 import MovieLink from "../components/movies";
 import MovieContextProvider from "../context/movieContext";
 import Spotlight from "../components/spotlight";
+import Filter from "../components/filter";
+import Pagination from "../components/pagination";
 
 const Home = () => (
   <Layout>
@@ -12,6 +14,9 @@ const Home = () => (
           <h3 className="movies-container__title">
             Os filmes mais populares da semana
           </h3>
+          <Filter />
+          <hr />
+          <Pagination />
           <MovieLink />
         </div>
       </main>
@@ -20,7 +25,10 @@ const Home = () => (
           margin: 0;
           box-sizing: border-box;
         }
-
+        .movies-container {
+          max-width: 80%;
+          margin: 0 auto;
+        }
         .movies-container__title {
           color: #ddd;
           font-family: "Poppins", sans-serif;

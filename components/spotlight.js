@@ -5,7 +5,6 @@ import { MovieContext } from "../context/movieContext";
 const Spotlight = () => {
   const { moviesState } = useContext(MovieContext);
   const { movies } = moviesState;
-  console.log(movies);
   return movies.length > 0 && (
     <div className="spotlight">
       <div className="spotlight__header">
@@ -38,8 +37,9 @@ const Spotlight = () => {
             justify-items: end;
             margin-left: 30%;
             position: relative;
-            max-height: 50%;
+            grid-template-rows: 400px;
             margin-bottom: 8%;
+            margin-top: 8%;
           }
           .spotlight__header {
             justify-self: flex-start;
@@ -54,9 +54,10 @@ const Spotlight = () => {
           }
 
           .spotlight__content-img img {
-            object-fit: cover;
+            object-fit: contain;
             width: 100%;
-            margin-bottom: -4px;
+            height: 500px
+
           }
           .spotlight__content h2 {
             color: #fff;

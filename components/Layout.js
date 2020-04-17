@@ -3,7 +3,6 @@ import Link from "next/link";
 
 const Layout = (props) => {
   const handleMenu = (e) => {
-    console.log(e.target);
     document
       .querySelectorAll(".navbar-icon-lines")[1]
       .classList.toggle("deactivated");
