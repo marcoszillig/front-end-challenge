@@ -11,9 +11,11 @@ const Movie = () => {
         <p className="movie-content"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, dolorem enim. Doloremque ex vel molestiae, labore illo, temporibus a, omnis magni consectetur ullam id! Nulla eius error ipsum ut quisquam! Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum corrupti deserunt facilis fuga autem maxime, eum temporibus commodi magnam quo saepe quasi laboriosam odio atque libero doloribus maiores asperiores pariatur.</p>
       </div>
       <style jsx>{`
+       
         .movie-container {
           max-width: 80%;
           margin: 0 auto;
+          height: 86.1vh;
         }
         .movie-title {
           font-family: "Poppins", sans-serif;
