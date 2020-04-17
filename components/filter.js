@@ -12,7 +12,10 @@ const Filter = () => {
       }}
       
       >Filtros</h3>      
-      <div className="movie__genres__wrapper">
+      <div className="movie__genres__wrapper" onClick={(e) => {
+        e.currentTarget.classList.remove('active')
+        
+      }}>
         {genres.map((genre) => (
           <div className="movie__genres__item" key={genre.id}>
             <input
