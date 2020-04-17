@@ -7,12 +7,34 @@ const Filter = () => {
 
   return (
     <div className="movie__genres">
-      <h3 className="movie__genres-title" onClick={(e) => {
-        e.target.nextSibling.classList.toggle('active')
-      }}
-      
-      >Filtros</h3>      
-      <div className="movie__genres__wrapper">
+      <h3
+        className="movie__genres-title"
+        onClick={(e) => {
+          e.target.nextSibling.classList.toggle("active");
+        }}
+      >
+        Filtros{" "}
+      </h3>
+      <div
+        className="movie__genres__wrapper"
+        onClick={(e) => {
+          e.currentTarget.classList.remove("active");
+        }}
+      >
+        {genreID && (
+          <p
+            className="movie__genres__clean-filter-btn"
+            onClick={() => {
+              dispatch({
+                type: "SET_GENRE",
+                genreID: "",
+              });
+            }}
+          >
+            Remover Filtros
+          </p>
+        )}
+
         {genres.map((genre) => (
           <div className="movie__genres__item" key={genre.id}>
             <input
@@ -27,6 +49,7 @@ const Filter = () => {
                   genreID: parseInt(e.target.value),
                 });
               }}
+              checked={genreID && parseInt(genre.id) === genreID ? true : false}
             />
             <label className="movie__genres__item-label" htmlFor={genre.id}>
               {genre.name}
@@ -38,10 +61,18 @@ const Filter = () => {
         .movie__genres {
           margin: 16px auto;
         }
-        .movie__genres__wrapper{
+        .movie__genres__wrapper {
           display: flex;
           flex-wrap: wrap;
           justify-content: center;
+        }
+        .movie__genres__clean-filter-btn {
+          font-family: "Poppins", sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #eee;
+            flex-basis: 100%;
+
         }
         .movie__genres-title {
           font-family: "Poppins", sans-serif;
@@ -67,12 +98,17 @@ const Filter = () => {
           cursor: pointer;
         }
         @media only screen and (max-width: 720px) {
-          .movie__genres__wrapper{
+          .movie__genres__clean-filter-btn {
+            
+            text-align: center;
+          }
+          .movie__genres__wrapper {
             height: 0;
             overflow: hidden;
             transition: height 0.4s ease-in-out;
+            text
           }
-          .movie__genres__wrapper.active{
+          .movie__genres__wrapper.active {
             height: 100%;
           }
         }

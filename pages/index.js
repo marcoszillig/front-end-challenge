@@ -24,6 +24,8 @@ const Home = () => (
         body {
           margin: 0;
           box-sizing: border-box;
+          min-height: 100vh;
+          background-color: #222;
         }
         .movies-container {
           max-width: 80%;
