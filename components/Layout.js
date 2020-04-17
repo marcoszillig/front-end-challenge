@@ -162,7 +162,7 @@ const Layout = (props) => {
             overflow: hidden;
           }
           .header {
-            position: sticky;
+            position: fixed;
             top: 0;
             width: 100vw;
             z-index: 1;
@@ -233,6 +233,9 @@ const Layout = (props) => {
           }
           .navbar__link {
             font-size: 2rem;
+          }
+          .container {
+            margin-top: 70px;
           }
         }
       `}</style>
