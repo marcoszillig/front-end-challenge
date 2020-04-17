@@ -3,8 +3,8 @@ import { MovieContext } from "../context/movieContext";
 
 const Pagination = () => {
   const { moviesState, dispatch } = useContext(MovieContext);
-  const { page, total_pages } = moviesState;
-  return (
+  const { page, total_pages, genreID } = moviesState;
+  return !genreID ? (
     <div className="movies__pagination">
       <button
         className="movies__pagination__prev-btn btn"
@@ -52,7 +52,7 @@ const Pagination = () => {
         }
       `}</style>
     </div>
-  );
+  ) : '';
 };
 
 export default Pagination;
