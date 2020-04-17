@@ -21,17 +21,20 @@ const Filter = () => {
           e.currentTarget.classList.remove("active");
         }}
       >
-        <p
-          className="movie__genres__clean-filter-btn"
-          onClick={() => {
-            dispatch({
-              type: "SET_GENRE",
-              genreID: "",
-            });
-          }}
-        >
-          Remover Filtros
-        </p>
+        {genreID && (
+          <p
+            className="movie__genres__clean-filter-btn"
+            onClick={() => {
+              dispatch({
+                type: "SET_GENRE",
+                genreID: "",
+              });
+            }}
+          >
+            Remover Filtros
+          </p>
+        )}
+
         {genres.map((genre) => (
           <div className="movie__genres__item" key={genre.id}>
             <input
@@ -63,6 +66,14 @@ const Filter = () => {
           flex-wrap: wrap;
           justify-content: center;
         }
+        .movie__genres__clean-filter-btn {
+          font-family: "Poppins", sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #eee;
+            flex-basis: 100%;
+
+        }
         .movie__genres-title {
           font-family: "Poppins", sans-serif;
           font-size: 1.2rem;
@@ -88,11 +99,7 @@ const Filter = () => {
         }
         @media only screen and (max-width: 720px) {
           .movie__genres__clean-filter-btn {
-            font-family: "Poppins", sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            color: #eee;
-            flex-basis: 100%;
+            
             text-align: center;
           }
           .movie__genres__wrapper {
