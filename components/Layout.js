@@ -96,6 +96,7 @@ const Layout = (props) => {
           height: 100%;
           display: flex;
           flex-direction: column;
+          overflow-x: hidden;
         }
         .header {
           background-color: #ffb900;
